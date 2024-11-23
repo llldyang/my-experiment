@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 from pwn import *
 sys.path.append('/home/li/Desktop/LibcSearcher')
-from LibcSearcher import LibcSearcher
+from LibcSearcher import LibcSearcher # type: ignore
 sh = process('./rop/ret2libc3')
 
 ret2libc3 = ELF('./rop/ret2libc3')
